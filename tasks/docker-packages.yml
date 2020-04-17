@@ -1,0 +1,26 @@
+---
+###############################################################################
+#
+# tasks/docker-packages.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+# Install the package and start it up
+- name: Install Docker packages
+  yum:
+    name: ['docker-ce',
+           'docker-ce-cli',
+           'containerd.io',
+           'python2-pip']
+    state: present
+  tags:
+    - docker-packages
+
+# Install pip packages
+- name: Install pip
+  pip:
+    name:
+      - docker-py
+  tags: docker-packages

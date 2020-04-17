@@ -1,0 +1,37 @@
+---
+###############################################################################
+#
+# handlers/main.yml
+#
+# handlers file for resolv.conf
+#
+###############################################################################
+
+# Start docker
+- name: Start Docker
+  service:
+      name: docker
+      state: started
+
+# Restart Docker
+- name: Restart Docker
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker
+
+# Enable Docker
+- name: Enable Docker
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+
+# Start SC4S
+- name: Start SC4S
+  systemd:
+      state: started
+      name: sc4s
+      enabled: yes
+  tags:
+    - sc4s-start

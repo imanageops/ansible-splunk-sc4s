@@ -1,0 +1,14 @@
+---
+###############################################################################
+#
+# tasks/docker-volume.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+- name: Create the SC4S Docker var volume
+  docker_volume:
+    name: "{{ sc4s_buffer_vol_name }}"
+  tags:
+    - docker-volume

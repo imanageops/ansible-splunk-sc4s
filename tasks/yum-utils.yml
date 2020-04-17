@@ -1,0 +1,15 @@
+---
+###############################################################################
+#
+# tasks/yum-utils.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+- name: Install the yum-utils package
+  yum:
+    name: yum-utils
+    state: present
+  tags:
+    - yum-utils

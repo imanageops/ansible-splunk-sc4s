@@ -1,0 +1,17 @@
+---
+###############################################################################
+#
+# tasks/sc4s-start.yml
+#
+# handlers file for splunk-sc4s
+#
+###############################################################################
+
+# Start docker
+- name: Start SC4S
+  systemd:
+      state: started
+      name: sc4s.service
+      enabled: yes
+  tags:
+    - sc4s-start

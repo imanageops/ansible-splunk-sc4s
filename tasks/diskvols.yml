@@ -1,0 +1,58 @@
+---
+###############################################################################
+#
+# tasks/diskvols.yml 
+#
+# Create needed disk vols
+#
+###############################################################################
+
+- name: Create a new primary partition at 100%
+  parted:
+    device: /dev/sdc
+    number: 1
+    state: present
+    part_end: 100%
+  tags:
+    - diskvols
+
+- name: Create the splunk install volume group
+  lvg:
+      vg: dockervg
+      pvs: /dev/sdc1
+  tags:
+    - diskvols
+
+- name: Create the Splunk Data volume
+  lvol:
+    vg: dockervg
+    lv: dockervol
+    size: +100%FREE
+  tags:
+    - diskvols
+
+- name: Create xfs filesystem on the volume
+  filesystem:
+    fstype: xfs
+    dev: /dev/mapper/dockervg-dockervol
+  tags:
+    - diskvols
+
+- name: Creates /var/lib/docker directory
+  file:
+    path: /var/lib/docker
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  tags:
+    - diskvols
+
+- name: Mount the Docker volume
+  mount:
+    path: /var/lib/docker
+    src: /dev/mapper/dockervg-dockervol
+    fstype: xfs
+    state: mounted
+  tags:
+    - diskvols

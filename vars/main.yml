@@ -1,0 +1,23 @@
+---
+###############################################################################
+#
+# vars/main.yml
+#
+# Main variables config file for splunk-sc4s
+#
+###############################################################################
+
+systemd_unit_file: "/lib/systemd/system/sc4s.service"
+
+sc4s_buffer_vol_name: splunk-sc4s-var
+sc4s_buffer_vol_dir: /var/lib/docker/volumes
+scfs_base_dir: /opt/sc4s
+sc4s_conf_dir: /opt/sc4s/local
+
+sc4s_env_file_template: ../templates/sc4s.env.j2
+sc4s_env_file: /opt/sc4s/env_file
+
+splunk_hec_url: http://ppdsplidx01:8088/services/collector/event,http://ppdsplidx02:8088/services/collector/event,http://ppdsplidx03:8088/services/collector/event
+splunk_hec_token: b20b8328-7aad-4595-9df9-135a3b02255b
+splunk_hec_workers: 3
+splunk_hec_tls_verify: no

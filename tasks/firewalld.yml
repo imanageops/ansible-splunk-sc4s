@@ -1,0 +1,32 @@
+---
+###############################################################################
+#
+# tasks/firewalld.yml
+#
+# Task for splunk-sc4s
+#
+##############################################################################
+
+- name: Configure firewalld for 514/tcp
+  firewalld:
+    port: 514/tcp
+    permanent: yes
+    state: enabled
+  tags:
+    - firewalld
+
+- name: Configure firewalld for 514/udp
+  firewalld:
+    port: 514/udp
+    permanent: yes
+    state: enabled
+  tags:
+    - firewalld
+
+- name: Configure firewalld for 6514/tcp
+  firewalld:
+    port: 6514/tcp
+    permanent: yes
+    state: enabled
+  tags:
+    - firewalld

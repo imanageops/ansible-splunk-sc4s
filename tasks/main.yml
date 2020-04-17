@@ -1,0 +1,31 @@
+---
+###############################################################################
+#
+# tasks/main.yml
+#
+# Main tasks file for splunk-sc4s
+#
+###############################################################################
+
+- debug:
+    msg: Importing tasks for splunk-sc4s
+
+- import_tasks: yum-utils.yml
+
+- import_tasks: docker-repo.yml
+
+- import_tasks: diskvols.yml
+
+- import_tasks: docker-packages.yml
+
+- import_tasks: systemd.yml
+
+- import_tasks: basedirs.yml
+
+- import_tasks: envfile.yml
+
+- import_tasks: docker-start.yml
+
+- import_tasks: docker-volume.yml
+
+- import_tasks: firewalld.yml

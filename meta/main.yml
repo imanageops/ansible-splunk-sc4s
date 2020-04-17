@@ -1,0 +1,39 @@
+---
+###############################################################################
+#
+# meta/main.yml
+#
+# Ansible Galaxy package metadata file for splunk-sc4s
+#
+###############################################################################
+
+galaxy_info:
+  role_name: splunk-sc4s
+  author: iManage Security Operations <secops@imanage.com>
+  description: iManage Ansible Role splunk-sc4s
+  company: iManage LLC
+  license: BSD
+  min_ansible_version: 2.4
+  issue_tracker_url:
+  platforms:
+    - name: 'Ubuntu'
+      versions:
+        - 'xenial'
+        - 'bionic'
+    - name: 'Debian'
+      versions:
+        - 'stretch'
+    - name: 'EL'
+      versions:
+        - '7'
+        - '8'
+    - name: 'Amazon'
+      versions:
+        - '2017.12'
+        - 'Candidate'
+
+  galaxy_tags:
+    - 'system'
+    - 'splunk'
+
+dependencies: []

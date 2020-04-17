@@ -1,0 +1,19 @@
+---
+###############################################################################
+#
+# tasks/yum-utils.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+- name: deploy systemd unit file
+  template:
+    src: sc4s.service.j2
+    dest: "{{ systemd_unit_file }}"
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  tags:
+    - systemd

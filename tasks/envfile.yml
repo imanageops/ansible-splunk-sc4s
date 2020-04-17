@@ -1,0 +1,19 @@
+---
+###############################################################################
+#
+# tasks/envfile.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+- name: deploy the sc4s env_file
+  template:
+    src: env_file.j2
+    dest: /opt/sc4s/env_file
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  tags:
+    - envfile

@@ -1,0 +1,25 @@
+---
+###############################################################################
+#
+# tasks/basedirs.yml
+#
+# Task for splunk-sc4s
+#
+###############################################################################
+
+- name: Create the /opt/sc4s directory if doesn't exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - /opt/sc4s
+    - /opt/sc4s/local
+    - /opt/sc4s/local/config
+    - /opt/sc4s/local/context
+    - /opt/sc4s/archive
+    - /opt/sc4s/tls
+  tags:
+    - basedirs
